@@ -19,19 +19,24 @@ Pipeline functionality can be found in the scikit-learn's `Pipeline` module. Pip
 
 ```python
 from sklearn.pipeline import Pipeline
-   
+
+# Create the pipeline
 pipe = Pipeline([('mms', MinMaxScaler()),
-                 ('tree', DecisionTreeClassifier(random_state=123))
-                 ('RF', RandomForestClassifier(random_state=123))])
+                 ('tree', DecisionTreeClassifier(random_state=123))])
 ```
 
-This pipeline will ensure that when running the model on our data, first we'll apply a MinMax scaler on our features. Next, a decision tree is applied to the data. Finally, we also fit a random forest to the data. 
-
-The model(s) can be fit using: 
+This pipeline will ensure that first we'll apply a Min Max scaler on our data before fitting a decision tree. However, the `Pipeline()` function above is only defining the sequence of actions to perform. In order to actually fit the model, you need to call the `.fit()` method like so: 
 
 ```python
+# Fit to the training data
 pipe.fit(X_train, y_train)
+```
 
+Then, to score the model on test data, you can call the `.score()` method like so: 
+
+```python
+# Calculate the score on test data
+pipe.score(X_test, y_test)
 ```
 
 A really good blogpost on the basic ideas of pipelines can be found [here](https://www.kdnuggets.com/2017/12/managing-machine-learning-workflows-scikit-learn-pipelines-part-1.html).
@@ -46,28 +51,28 @@ First, you define the pipeline same way as above. Next, you create a parameter g
 ```python
 # Create the pipeline
 pipe = Pipeline([('mms', MinMaxScaler()),
-                 ('tree', DecisionTreeClassifier(random_state=123))
-                 ('RF', RandomForestClassifier(random_state=123))])
+                 ('tree', DecisionTreeClassifier(random_state=123))])
 
 # Create the grid parameter
 grid = [{'tree__max_depth': [None, 2, 6, 10], 
-         'tree__min_samples_split': [5, 10], 
-         'RF__max_depth': [None, 2, 3, 4, 5, 6], 
-         'RF__min_samples_split': [2, 5, 10]}]
+         'tree__min_samples_split': [5, 10]}]
 
 
 # Create the grid, with "pipe" as the estimator
 gridsearch = GridSearchCV(estimator=pipe, 
                           param_grid=grid, 
                           scoring='accuracy', 
-                          cv=3)
+                          cv=5)
 
 # Fit using grid search
 gridsearch.fit(X_train, y_train)
+
+# Calculate the test score
+gridsearch.score(X_test, y_test)
 ```
 
 An article with a detailed workflow can be found [here](https://www.kdnuggets.com/2018/01/managing-machine-learning-workflows-scikit-learn-pipelines-part-2.html).
 
 ## Summary
 
-Great, this wasn't too difficult! The proof of all this is in the pudding. In the next lab, you'll extensively use this workflow to build several pipelines applying several classification algorithms. 
+Great, this wasn't too difficult! The proof of all this is in the pudding. In the next lab, you'll use this workflow to build pipelines applying classification algorithms you have learned so far in this module. 
