@@ -9,7 +9,7 @@ You've learned a substantial number of different supervised learning algorithms.
 
 You will be able to:
 
-- Explain how pipelines can be used to test many different parameters 
+- Explain how pipelines can be used to combine various parts of a machine learning workflow  
 
 ## Why Use Pipelines?
 
