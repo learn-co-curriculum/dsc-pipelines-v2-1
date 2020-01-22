@@ -15,7 +15,7 @@ You will be able to:
 
 Pipelines are extremely useful tools to write clean and manageable code for machine learning. Recall how we start preparing our dataset: we want to clean our data, transform it, potentially use feature selection, and then run a machine learning algorithm. Using pipelines, you can do all these steps in one go!
 
-Pipeline functionality can be found in the scikit-learn's `Pipeline` module. Pipelines can be coded in a very simple way:
+Pipeline functionality can be found in scikit-learn's `Pipeline` module. Pipelines can be coded in a very simple way:
 
 ```python
 from sklearn.pipeline import Pipeline
@@ -25,7 +25,7 @@ pipe = Pipeline([('mms', MinMaxScaler()),
                  ('tree', DecisionTreeClassifier(random_state=123))])
 ```
 
-This pipeline will ensure that first we'll apply a Min Max scaler on our data before fitting a decision tree. However, the `Pipeline()` function above is only defining the sequence of actions to perform. In order to actually fit the model, you need to call the `.fit()` method like so: 
+This pipeline will ensure that first we'll apply a Min-Max scaler on our data before fitting a decision tree. However, the `Pipeline()` function above is only defining the sequence of actions to perform. In order to actually fit the model, you need to call the `.fit()` method like so: 
 
 ```python
 # Fit to the training data
@@ -39,14 +39,14 @@ Then, to score the model on test data, you can call the `.score()` method like s
 pipe.score(X_test, y_test)
 ```
 
-A really good blogpost on the basic ideas of pipelines can be found [here](https://www.kdnuggets.com/2017/12/managing-machine-learning-workflows-scikit-learn-pipelines-part-1.html).
+A really good blog post on the basic ideas of pipelines can be found [here](https://www.kdnuggets.com/2017/12/managing-machine-learning-workflows-scikit-learn-pipelines-part-1.html).
 
 
 ## Integrating Grid Search in Pipelines
 
-Note that the above pipeline simply creates one pipeline for a training set, and evaluates on a test set. Is it possible to create a pipeline that performs grid search? And Cross-Validation? Yes, it is!
+Note that the above pipeline simply creates one pipeline for a training set, and evaluates on a test set. Is it possible to create a pipeline that performs grid search? And cross-validation? Yes, it is!
 
-First, you define the pipeline same way as above. Next, you create a parameter grid. When this is all done, you use the function `GridSearchCV()`, which you've seen before, and specify the pipeline as the estimator and the parameter grid. You also have to define how many folds you'll use in your cross-validation. 
+First, you define the pipeline in the same way as above. Next, you create a parameter grid. When this is all done, you use the function `GridSearchCV()`, which you've seen before, and specify the pipeline as the estimator and the parameter grid. You also have to define how many folds you'll use in your cross-validation. 
 
 ```python
 # Create the pipeline
