@@ -1,4 +1,3 @@
-
 # Introduction to Pipelines
 
 ## Introduction
@@ -13,7 +12,7 @@ You will be able to:
 
 ## Why Use Pipelines?
 
-Pipelines are extremely useful tools to write clean and manageable code for machine learning. Recall how we start preparing our dataset: we want to clean our data, transform it, potentially use feature selection, and then run a machine learning algorithm. Using pipelines, you can do all these steps in one go!
+Pipelines are extremely useful tools to write clean and manageable code for machine learning. Recall how we start preparing our dataset: we want to clean our data, transform it, potentially use feature selection, and then run a machine learning algorithm. Using pipelines, you can do all these steps in one go! Additionally, pipelines help prevent data leakage during cross-validation, which is often a concern when using the `GridSearchCV` module.
 
 Pipeline functionality can be found in scikit-learn's `Pipeline` module. Pipelines can be coded in a very simple way:
 
@@ -76,3 +75,8 @@ An article with a detailed workflow can be found [here](https://www.kdnuggets.co
 ## Summary
 
 Great, this wasn't too difficult! The proof of all this is in the pudding. In the next lab, you'll use this workflow to build pipelines applying classification algorithms you have learned so far in this module. 
+
+
+```python
+
+```
